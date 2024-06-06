@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  h1= title
+  if book_list.length
+    ul
+      each book in book_list
+        li
+          a(href=book.url) #{book.title}
+        if book.Author
+            |  (#{book.Author.first_name} #{book.Author.family_name})
+        else
+            |  (Author not available)
+
+  else
+    p There are no books.
+

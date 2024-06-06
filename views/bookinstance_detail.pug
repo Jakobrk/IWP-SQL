@@ -1,0 +1,24 @@
+extends layout
+
+block content
+
+  h1 Book imprint: #{bookinstance.imprint}
+
+  p #[strong Title: ]
+    a(href=book.url) #{book.title}
+  p #[strong Publisher:] #{bookinstance.imprint}
+
+  p #[strong Status: ]
+    if bookinstance.status=='Available'
+      span.text-success #{bookinstance.status}
+    else if bookinstance.status=='Maintenance'
+      span.text-danger #{bookinstance.status}
+    else
+      span.text-warning #{bookinstance.status}
+
+  if bookinstance.status!='Available'
+    p #[strong Due back:] #{bookinstance.due_back}
+
+  hr
+  p
+    a(href=bookinstance.url+'/delete') Delete BookInstance
